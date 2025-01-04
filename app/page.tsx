@@ -1,4 +1,5 @@
 import MiddleSection from "@/components/MiddleSection";
+import RightSection from "@/components/RightSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         </div>
 
         <div className="col-span-4">
+          <RightSection/>
         </div>
       </div>
     </div>

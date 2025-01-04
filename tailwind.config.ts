@@ -10,8 +10,8 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'var(--background)',
+  			foreground: 'var(--foreground)',
   			card: {
   				DEFAULT: 'var(--card)',
   				foreground: 'hsl(var(--card-foreground))'
@@ -37,7 +37,7 @@ export default {
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
+  				DEFAULT: 'var(--destructive)',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
   			border: 'hsl(var(--border))',

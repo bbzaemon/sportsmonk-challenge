@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar1Icon } from "lucide-react"
+import { Calendar1Icon, Search, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import { format, addDays, subDays, parseISO } from "date-fns";
 import { useQuery } from '@tanstack/react-query';
@@ -130,29 +130,106 @@ export default function App(props: IAppProps) {
                 }
             ],
         },
+        {
+            _id: 2,
+            league: "Spain - La Liga",
+            round: "Quarter Finals",
+            matches: [
+                {
+                    id: 1,
+                    starting_at: "2024-03-13T13:40:00.000Z",
+                    status: "Upcoming",
+                    time: "13:40",
+                    team1: {
+                        name: "Spain",
+                        flag: "/spain-flag.png",
+                        score: "2"
+                    },
+                    team2: {
+                        name: "Netherlands",
+                        flag: "/netherlands-flag.png",
+                        score: "1"
+                    },
+                },
+                {
+                    id: 2,
+                    starting_at: "2024-03-13T13:40:00.000Z",
+                    status: "Upcoming",
+                    time: "13:40",
+                    team1: {
+                        name: "Japan",
+                        flag: "/japan-flag.png",
+                        score: ""
+                    },
+                    team2: {
+                        name: "Sweden",
+                        flag: "/sweden-flag.png",
+                        score: ""
+                    }
+                },
+                {
+                    id: 3,
+                    starting_at: "2024-03-13T13:40:00.000Z",
+                    status: "Upcoming",
+                    time: "18:20",
+                    team1: {
+                        name: "Olympiakos",
+                        flag: "/olympiakos-flag.png",
+                        score: "0"
+                    },
+                    team2: {
+                        name: "Genk",
+                        flag: "/genk-flag.png",
+                        score: "0"
+                    }
+                }
+            ],
+        },
     ];
 
     return (
         <>
-            <div className="relative rounded-lg overflow-hidden w-full h-[277px] m-4">
+            <div className="relative rounded-3xl overflow-hidden h-[277px] my-4">
                 <Image
                     src="/banner.jpg"
                     alt="Main Content"
                     layout="fill"
-                    objectFit="contain"
-                    className="rounded-lg"
+                    objectFit="fill"
+                    className="rounded-3xl"
                 />
             </div>
 
-            <Card className="border-none p-4">
+            <Card className="border-none p-4 rounded-3xl">
+
+            <div className="flex items-center gap-4 my-2">
+                <div className="flex items-center gap-2 bg-background p-2 rounded-lg">
+                    <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary"></span>
+                        <span className="text-sm font-bold text-primary">Live</span>
+                    </div>
+                    <span className="text-sm">(1)</span>
+                </div>
+                <div className="flex-1 relative bg-background rounded-lg">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2" size={18} />
+                    <input 
+                        type="text"
+                        placeholder="Search For Matches"
+                        className="w-full rounded-lg placeholder:text-center pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background"
+                    />
+                </div>
+                <Button variant="ghost" className="flex items-center gap-2 text-sm bg-background">
+                    All Matches
+                    <ChevronDown size={18} />
+                </Button>
+            </div>
+
                 {/* Date Navigation */}
-                <div className="mb-6">
-                    <div className="flex w-full gap-2 justify-between"> 
+                <div className="my-6">
+                    <div className="flex w-full gap-2 justify-between font-semibold"> 
                         {dates.map((item, index) => (
                             <Button
-                                key={index} // justify-between
-                                variant={item.date.getTime() === staticDate.getTime() ? "secondary" : "ghost"}
-                                className={`bg-[#2c2c2c] h-full py-1 flex flex-col gap-0 items-center w-full rounded-xl`}
+                                key={index}
+                                className={`bg-background h-full py-1 flex flex-col gap-0 items-center w-full rounded-xl ${item.date.getTime() === staticDate.getTime() ? "border border-primary text-primary" : "ghost"}`}
                             // onClick={() => setSelectedDate(item.date)}
                             >
                                 {/* <div className="r"> */}
@@ -162,23 +239,23 @@ export default function App(props: IAppProps) {
                             </Button>
                         ))}
 
-                        <Button variant="outline" className="bg-[#2c2c2c] h-full py-1 flex gap-2 items-center w-full rounded-xl hover:bg-[#9BFF00]/10">
-                            <Calendar1Icon size={24} className="text-primary" />
+                        <button className="bg-background border border-primary svg p-4 h-full py-1 flex gap-2 items-center w-full rounded-xl hover:bg-primary/10">
+                            <Calendar1Icon className="text-primary" />
                             <div className="flex flex-col items-start">
                                 <span className="text-sm">View</span>
                                 <span className="text-xs">Calendar</span>
                             </div>
-                        </Button>
+                        </button>
                     </div>
                 </div>
 
                 <div className="">
                     {staticMatches.map((league) => (
-                            <Card className=" mb-2  border border-black rounded-lg"  key={league._id}>
-                                <CardHeader className="p-4 bg-black rounded-t-lg">
+                            <Card className=" mb-6 border border-[#171717] rounded-2xl"  key={league._id}>
+                                <CardHeader className="p-4 bg-black rounded-t-2xl">
                                     <CardTitle>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-md font-medium">{league.league}</span>
+                                                <span className="text-md">{league.league}</span>
                                                 <span className="text-xs text-gray-400">[ {league.round} ]</span>
                                         </div>
                                     </CardTitle>
@@ -186,7 +263,7 @@ export default function App(props: IAppProps) {
                                 </CardHeader>
                                 <CardContent className="p-0">
                                         {league.matches.map((match, index) => (
-                                            <div className={`p-4 mt-0 text-sm font-medium ${index % 2 ? "bg-black" : ""}`} key={match.id}>
+                                            <div className={`scorecard p-4 mt-0 text-sm font-semibold ${index % 2 ? "" : "bg-background"}`} key={match.id}>
                                                     <div className="flex justify-between items-center">
                                                         <div className="flex items-center gap-2">
                                                             <span>{match.time}</span>
@@ -210,7 +287,7 @@ export default function App(props: IAppProps) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                            </div>
                                         ))}
                                 </CardContent>
                             </Card>

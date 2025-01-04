@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 100%;
+    --background: #303030;
+    --foreground: #FFFFFF;
     
     --card: #222222;
     --card-foreground: 0 0% 100%;
@@ -25,7 +25,7 @@
     --accent: 0 0% 19%;
     --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 84.2% 60.2%;
+    --destructive: #808080;
     --destructive-foreground: 210 40% 98%;
     
     --border: 0 0% 19%;
@@ -42,6 +42,21 @@
     font-family: "Sofia Sans", sans-serif;
   }
 
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--destructive) var(--background) ;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  *::-webkit-scrollbar-track {
+    border-radius: 0.5rem;
+    background: var(--background);
+  }
+  
+
   .sidebar {
     @apply border-r border-[red];
   }
@@ -50,7 +65,11 @@
     @apply bg-background;
   }
 
+  .scorecard:last-child {
+    @apply rounded-b-2xl
+  }
+
   .card {
-    @apply bg-card text-card-foreground rounded-lg border border-[#303030];
+    @apply bg-card text-card-foreground rounded-lg border;
   }
 }
