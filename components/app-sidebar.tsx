@@ -88,7 +88,7 @@ export function AppSidebar() {
         <div className="py-4">
          <div className="flex items-center my-4">
            <h1 className="text-xl font-thin italic m-auto">
-             <span className="text-white">FOOTBALL</span>
+             <span className="text-white font-bold">FOOTBALL</span>
              <span className="text-primary">SHURU</span>
            </h1>
          </div>
@@ -106,8 +106,8 @@ export function AppSidebar() {
             <SidebarMenu className="gap-3">
               {group1.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className={`text-xl ${item.isActive ? 'text-primary border-l-4 rounded-l-none border-primary' : ''}`}>
+                  <SidebarMenuButton asChild className="mx-2">
+                    <a href={item.url} className={`text-xl ${item.isActive ? 'active-menu-tab' : ''}`}>
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
@@ -124,7 +124,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {group2.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="mx-2">
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
@@ -144,7 +144,7 @@ export function AppSidebar() {
             <SidebarMenu className="gap-3">
               {group3.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="mx-2">
                     <a href={item.url} className="text-xl">
                       <item.icon />
                       <span>{item.title}</span>

@@ -87,12 +87,12 @@ export default function App(props: IAppProps) {
                     time: "13:40",
                     team1: {
                         name: "Spain",
-                        flag: "/spain-flag.png",
+                        flag: "/Spain.png",
                         score: "2"
                     },
                     team2: {
                         name: "Netherlands",
-                        flag: "/netherlands-flag.png",
+                        flag: "/Netherlands.png",
                         score: "1"
                     },
                 },
@@ -103,12 +103,12 @@ export default function App(props: IAppProps) {
                     time: "13:40",
                     team1: {
                         name: "Japan",
-                        flag: "/japan-flag.png",
+                        flag: "/Japan.png",
                         score: "0"
                     },
                     team2: {
                         name: "Sweden",
-                        flag: "/sweden-flag.png",
+                        flag: "/Sweden.png",
                         score: "0"
                     }
                 },
@@ -119,12 +119,12 @@ export default function App(props: IAppProps) {
                     time: "18:20",
                     team1: {
                         name: "Olympiakos",
-                        flag: "/olympiakos-flag.png",
+                        flag: "/Olympiakos.png",
                         score: "0"
                     },
                     team2: {
                         name: "Genk",
-                        flag: "/genk-flag.png",
+                        flag: "/Genk.png",
                         score: "0"
                     }
                 }
@@ -142,12 +142,12 @@ export default function App(props: IAppProps) {
                     time: "13:40",
                     team1: {
                         name: "Spain",
-                        flag: "/spain-flag.png",
+                        flag: "/Spain.png",
                         score: "2"
                     },
                     team2: {
                         name: "Netherlands",
-                        flag: "/netherlands-flag.png",
+                        flag: "/Netherlands.png",
                         score: "1"
                     },
                 },
@@ -158,12 +158,12 @@ export default function App(props: IAppProps) {
                     time: "13:40",
                     team1: {
                         name: "Japan",
-                        flag: "/japan-flag.png",
+                        flag: "/Japan.png",
                         score: ""
                     },
                     team2: {
                         name: "Sweden",
-                        flag: "/sweden-flag.png",
+                        flag: "/Sweden.png",
                         score: ""
                     }
                 },
@@ -174,12 +174,12 @@ export default function App(props: IAppProps) {
                     time: "18:20",
                     team1: {
                         name: "Olympiakos",
-                        flag: "/olympiakos-flag.png",
+                        flag: "/Olympiakos.png",
                         score: "0"
                     },
                     team2: {
                         name: "Genk",
-                        flag: "/genk-flag.png",
+                        flag: "/Genk.png",
                         score: "0"
                     }
                 }
@@ -214,7 +214,7 @@ export default function App(props: IAppProps) {
                     <input 
                         type="text"
                         placeholder="Search For Matches"
-                        className="w-full rounded-lg placeholder:text-center pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background"
+                        className="w-full rounded-lg placeholder:text-center placeholder:text-foreground placeholder:text-thin pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background"
                     />
                 </div>
                 <Button variant="ghost" className="flex items-center gap-2 text-sm bg-background">
@@ -230,6 +230,7 @@ export default function App(props: IAppProps) {
                             <Button
                                 key={index}
                                 className={`bg-background h-full py-1 flex flex-col gap-0 items-center w-full rounded-xl ${item.date.getTime() === staticDate.getTime() ? "border border-primary text-primary" : "ghost"}`}
+                                variant="ghost"
                             // onClick={() => setSelectedDate(item.date)}
                             >
                                 {/* <div className="r"> */}
@@ -265,27 +266,26 @@ export default function App(props: IAppProps) {
                                         {league.matches.map((match, index) => (
                                             <div className={`scorecard p-4 mt-0 text-sm font-semibold ${index % 2 ? "" : "bg-background"}`} key={match.id}>
                                                     <div className="flex justify-between items-center">
-                                                        <div className="flex items-center gap-2">
-                                                            <span>{match.time}</span>
-                                                            {match.status === "Live" && (
-                                                                <Badge variant="outline" className="bg-transparent border-[#9BFF00]">
-                                                                    Live
-                                                                </Badge>
-                                                            )}
+                                                        <div className="flex items-center gap-2 w-[100px]">
+                                                            {match.status === "Live" ? (
+                                                                <span className="text-primary">Live</span>)
+                                                                : <span>{match.time}</span>
+                                                            }
                                                         </div>
-                                                        <div className="flex items-center gap-4 w-[300px] justify-between">
-                                                            <div className="flex items-center gap-2 flex-1 text-center justify-end">
+                                                        <div className="flex items-center gap-4 flex-1 mx-auto justify-between">
+                                                            <div className="flex items-center gap-2 flex-1 justify-end">
                                                                 <span>{match.team1.name}</span>
-                                                                <img src={"/vercel.svg"} alt={match.team1.name} className="w-6 h-6" />
+                                                                <img src={match.team1.flag} alt={match.team1.name} className="w-6 h-6" />
                                                             </div>
                                                             <span className="font-bold flex-0 text-center justify-center">
                                                                 {`${match.team1.score} - ${match.team2.score}`}
                                                             </span>
                                                             <div className="flex items-center gap-2 flex-1 justify-start">
-                                                                <img src={"/vercel.svg"} alt={match.team2.name} className="w-6 h-6" />
+                                                                <img src={match.team2.flag} alt={match.team2.name} className="w-6 h-6" />
                                                                 <span>{match.team2.name}</span>
                                                             </div>
                                                         </div>
+                                                      
                                                     </div>
                                             </div>
                                         ))}

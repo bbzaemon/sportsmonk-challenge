@@ -38,7 +38,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground max-w-[1440px] mx-auto;
     font-family: "Sofia Sans", sans-serif;
   }
 
@@ -72,4 +72,8 @@
   .card {
     @apply bg-card text-card-foreground rounded-lg border;
   }
+
+  .active-menu-tab::before {
+    @apply content-[''] w-1 h-full bg-primary absolute left-0 top-0 rounded-r-2xl;
+    }
 }
