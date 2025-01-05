@@ -2,7 +2,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Install Packages using 
+```bash
+npm i
+# or
+npm install
+```
+
+and run the development server:
 
 ```bash
 npm run dev
@@ -13,6 +20,14 @@ pnpm dev
 # or
 bun dev
 ```
+
+Here are some Screenshots of app in local 
+
+![image](https://github.com/user-attachments/assets/9e0dbfc9-a5b8-44d8-916f-6684ed12f9fc)
+
+![image](https://github.com/user-attachments/assets/dc628473-4025-4c44-a1e8-6672a120b83b)
+
+![image](https://github.com/user-attachments/assets/5d13c825-9e55-475d-b30a-4de9890463cc)
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
