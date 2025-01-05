@@ -8,6 +8,8 @@ import { format, addDays, subDays, parseISO } from "date-fns";
 import { useQuery } from '@tanstack/react-query';
 import { useState } from "react"
 import { Card, CardTitle, CardDescription, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
+import { AppSidebar } from "./app-sidebar"
+import { SidebarTrigger } from "./ui/sidebar"
 
 export interface IAppProps { }
 
@@ -189,7 +191,7 @@ export default function App(props: IAppProps) {
 
     return (
         <>
-            <div className="relative rounded-3xl overflow-hidden h-[277px] my-4">
+            <div className="relative rounded-3xl overflow-hidden h-[168px] md:h-[277px] my-4">
                 <Image
                     src="/banner.jpg"
                     alt="Main Content"
@@ -201,15 +203,15 @@ export default function App(props: IAppProps) {
 
             <Card className="border-none p-4 rounded-3xl">
 
-            <div className="flex items-center gap-4 my-2">
-                <div className="flex items-center gap-2 bg-background p-2 rounded-lg">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 my-2">
+                <div className="flex basis-1/3	sm:basis-auto items-center gap-2 bg-background p-2 rounded-lg">
                     <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-primary"></span>
                         <span className="text-sm font-bold text-primary">Live</span>
                     </div>
                     <span className="text-sm">(1)</span>
                 </div>
-                <div className="flex-1 relative bg-background rounded-lg">
+                <div className="flex-1 basis-full order-last sm:order-none relative bg-background rounded-lg">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2" size={18} />
                     <input 
                         type="text"
@@ -217,45 +219,45 @@ export default function App(props: IAppProps) {
                         className="w-full rounded-lg placeholder:text-center placeholder:text-foreground placeholder:text-thin pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background"
                     />
                 </div>
-                <Button variant="ghost" className="flex items-center gap-2 text-sm bg-background">
+                <Button variant="ghost" className="flex basis-1/3 sm:basis-auto items-center gap-2 text-sm bg-background">
                     All Matches
                     <ChevronDown size={18} />
                 </Button>
+        {/* <SidebarTrigger /> */}
             </div>
 
                 {/* Date Navigation */}
-                <div className="my-6">
-                    <div className="flex w-full gap-2 justify-between font-semibold"> 
-                        {dates.map((item, index) => (
-                            <Button
-                                key={index}
-                                className={`bg-background h-full py-1 flex flex-col gap-0 items-center w-full rounded-xl ${item.date.getTime() === staticDate.getTime() ? "border border-primary text-primary" : "ghost"}`}
-                                variant="ghost"
-                            // onClick={() => setSelectedDate(item.date)}
-                            >
-                                {/* <div className="r"> */}
-                                    <span className="text-sm">{getLabel(item)}</span>
-                                    <span className="text-xs">{format(item.date, "dd MMM")}</span>
-                                {/* </div> */}
-                            </Button>
-                        ))}
+                        {/* <div className="flex md:flex-row md:flex sm:flex-row container my-6 gap-2 justify-between font-semibold">  */}
+                        <div className="grid grid-cols-2 lg:grid-cols-7 md:grid-cols-3 container my-6 gap-2 justify-between font-semibold"> 
+                            {dates.map((item, index) => (
+                                <Button
+                                    key={index}
+                                    className={`bg-background h-full py-1 flex flex-col gap-0 items-center w-full rounded-xl ${item.date.getTime() === staticDate.getTime() ? "border border-primary text-primary" : "ghost"}`}
+                                    variant="ghost"
+                                // onClick={() => setSelectedDate(item.date)}
+                                >
+                                    {/* <div className="r"> */}
+                                        <span className="text-sm">{getLabel(item)}</span>
+                                        <span className="text-xs">{format(item.date, "dd MMM")}</span>
+                                    {/* </div> */}
+                                </Button>
+                            ))}
 
-                        <button className="bg-background border border-primary svg p-4 h-full py-1 flex gap-2 items-center w-full rounded-xl hover:bg-primary/10">
-                            <Calendar1Icon className="text-primary" />
-                            <div className="flex flex-col items-start">
-                                <span className="text-sm">View</span>
-                                <span className="text-xs">Calendar</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
+                            <button className="basis-1/2 bg-background border border-primary svg p-4 h-full py-1 flex gap-2 items-center w-full rounded-xl hover:bg-primary/10">
+                                <Calendar1Icon className="text-primary" />
+                                <div className="flex flex-col items-start">
+                                    <span className="text-sm">View</span>
+                                    <span className="text-xs">Calendar</span>
+                                </div>
+                            </button>
+                        </div>
 
                 <div className="">
                     {staticMatches.map((league) => (
                             <Card className=" mb-6 border border-[#171717] rounded-2xl"  key={league._id}>
                                 <CardHeader className="p-4 bg-black rounded-t-2xl">
                                     <CardTitle>
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-center gap-2 flex-wrap md:flex-nowrap ">
                                                 <span className="text-md">{league.league}</span>
                                                 <span className="text-xs text-gray-400">[ {league.round} ]</span>
                                         </div>
@@ -265,15 +267,15 @@ export default function App(props: IAppProps) {
                                 <CardContent className="p-0">
                                         {league.matches.map((match, index) => (
                                             <div className={`scorecard p-4 mt-0 text-sm font-semibold ${index % 2 ? "" : "bg-background"}`} key={match.id}>
-                                                    <div className="flex justify-between items-center">
-                                                        <div className="flex items-center gap-2 w-[100px]">
+                                                    <div className="flex flex-wrap justify-between items-center">
+                                                        <div className="items-center gap-2 w-[100px] basis-full sm:basis-auto">
                                                             {match.status === "Live" ? (
                                                                 <span className="text-primary">Live</span>)
                                                                 : <span>{match.time}</span>
                                                             }
                                                         </div>
                                                         <div className="flex items-center gap-4 flex-1 mx-auto justify-between">
-                                                            <div className="flex items-center gap-2 flex-1 justify-end">
+                                                            <div className="flex items-center gap-2 flex-none sm:flex-1 justify-start sm:justify-end">
                                                                 <span>{match.team1.name}</span>
                                                                 <img src={match.team1.flag} alt={match.team1.name} className="w-6 h-6" />
                                                             </div>

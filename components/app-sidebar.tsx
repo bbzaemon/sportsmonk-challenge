@@ -14,6 +14,7 @@ import {
   SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Button } from "@/components/ui/button"
+import Logo from "./Logo"
 
 // Menu items.
 const group1 = [
@@ -87,10 +88,7 @@ export function AppSidebar() {
      <SidebarContent>
         <div className="py-4">
          <div className="flex items-center my-4">
-           <h1 className="text-xl font-thin italic m-auto">
-             <span className="text-white font-bold">FOOTBALL</span>
-             <span className="text-primary">SHURU</span>
-           </h1>
+           <Logo/>
          </div>
          <div className="relative mx-4">
            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500" />

@@ -33,12 +33,13 @@
     --ring: 74 52% 51%;
     
     --radius: 0.5rem;
+
   }
 }
-
+/* max-w-[1440px] mx-auto */
 @layer base {
   body {
-    @apply bg-background text-foreground max-w-[1440px] mx-auto;
+    @apply bg-background text-foreground max-w-screen-2xl mx-auto;
     font-family: "Sofia Sans", sans-serif;
   }
 
