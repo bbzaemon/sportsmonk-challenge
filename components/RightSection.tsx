@@ -60,13 +60,12 @@ export default function App (props: IAppProps) {
         <div
           className="rounded-xl overflow-hidden mb-4 relative"
         >
-          <div className="relative rounded-xl overflow-hidden h-[200px]">
+          <div className="relative rounded-xl overflow-hidden object-fill h-[200px]">
           <Image
             src={feturedPost.imgSrc}
             alt={feturedPost.title}
             className="w-full rounded-xl"
             layout="fill"
-            objectFit="fill"
               />
           </div>
           <div className="flex p-1 my-2 justify-between">
@@ -91,21 +90,14 @@ export default function App (props: IAppProps) {
             className="flex items-start space-x-4 rounded-lg"
           >
             {/* News Image */}
-          <div className="w-20 h-20 relative overflow-hidden">
+          <div className="w-20 h-20 relative object-cover	overflow-hidden">
             <Image
               src={news.imgSrc}
               alt={news.title}
               className="rounded-md"
               layout="fill"
-              objectFit="cover"
               />
               </div>
-            {/* <img
-              src={news.imgSrc}
-              alt={news.title}
-              className="w-20 h-20 rounded-md object-cover"
-            /> */}
-
             {/* News Content */}
             <div className="flex-1">
               <h3 className="text-lg font-semibold leading-6 line-clamp-2 my-1">

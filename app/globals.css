@@ -36,7 +36,6 @@
 
   }
 }
-/* max-w-[1440px] mx-auto */
 @layer base {
   body {
     @apply bg-background text-foreground max-w-screen-2xl mx-auto;
@@ -76,5 +75,9 @@
 
   .active-menu-tab::before {
     @apply content-[''] w-1 h-full bg-primary absolute left-0 top-0 rounded-r-2xl;
-    }
+  }
+
+  .middle-banner {
+    @apply relative rounded-3xl overflow-hidden my-4 rounded-3xl h-[168px] object-fill md:h-[277px];
+  }
 }
